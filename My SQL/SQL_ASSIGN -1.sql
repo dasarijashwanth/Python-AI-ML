@@ -32,7 +32,7 @@ SELECT * FROM film WHERE rating IN ('PG', 'G') ORDER BY rental_rate DESC;
 SELECT length, COUNT(*) AS films FROM film WHERE title LIKE 'T%' GROUP BY length HAVING COUNT(*) > 5;
 
 -- 12
-SELECT actor_id, COUNT(*) AS films FROM film_actor GROUP BY actor_id HAVING COUNT(*) > 10;
+SELECT a.actor_id, a.first_name, a.last_name, COUNT(*) AS films FROM actor a JOIN film_actor fa USING (actor_id) GROUP BY a.actor_id HAVING COUNT(*) > 10;
 
 -- 13
 SELECT title, rental_rate, length FROM film ORDER BY rental_rate DESC, length DESC LIMIT 5;
